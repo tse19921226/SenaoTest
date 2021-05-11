@@ -1,9 +1,11 @@
 package com.example.senaotest;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +46,9 @@ public class TopBarView extends ConstraintLayout {
         svSearch = view.findViewById(R.id.sv_search);
         ivBack.setOnClickListener(onClickListener);
         svSearch.setOnQueryTextListener(onQueryTextListener);
+        EditText editText = findViewById(androidx.appcompat.R.id.search_src_text);
+        editText.setTextColor(Color.BLACK);
+        editText.setHintTextColor(Color.GRAY);
     }
 
     public void setViewType(int Type){
