@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StoreData {
-    private List<StoreItem> data = new ArrayList<>();
+    private ArrayList<StoreItem> data = new ArrayList<>();
 
-    public List<StoreItem> getData() {
+    public ArrayList<StoreItem> getData() {
         return data;
     }
 
-    public void setData(List<StoreItem> data) {
+    public void setData(ArrayList<StoreItem> data) {
         this.data = data;
     }
 

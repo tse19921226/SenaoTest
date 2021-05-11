@@ -30,7 +30,7 @@
         android:textSize="30sp"
         android:visibility="gone"/>
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/sv_search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

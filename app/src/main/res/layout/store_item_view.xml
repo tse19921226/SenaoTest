@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="200dp"
+    android:padding="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/store_item_bg">
 
     <ImageView
         android:id="@+id/iv_picture"
@@ -23,8 +25,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline5"
         android:text="Name"
-        android:gravity="center"
-        android:textSize="40sp" />
+        android:gravity="center_vertical"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tv_final_price"
@@ -37,27 +39,29 @@
         android:text="1234"
         android:gravity="center"
         android:textColor="@android:color/holo_red_light"
-        android:textSize="25sp"/>
+        android:textSize="18sp"/>
 
     <ImageView
         android:id="@+id/favorite"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:srcCompat="@android:drawable/star_big_off"
-        app:layout_constraintTop_toBottomOf="@id/guideline8"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/shopcar"
         app:layout_constraintStart_toEndOf="@id/guideline6"
-        app:layout_constraintEnd_toStartOf="@id/shopcar"/>
+        app:layout_constraintTop_toBottomOf="@id/guideline8"
+        android:src="@android:drawable/star_big_on"/>
 
     <ImageView
         android:id="@+id/shopcar"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:srcCompat="@android:drawable/ic_menu_info_details"
-        app:layout_constraintTop_toBottomOf="@id/guideline8"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/favorite"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/guideline8"
+        android:src="@android:drawable/presence_video_away" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -85,5 +89,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8"/>
+        app:layout_constraintGuide_percent="0.7"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

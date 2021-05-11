@@ -14,6 +14,7 @@ public class DataSync extends AsyncTask<String, String, String> {
     private String TAG = getClass().getSimpleName();
 
     private Context mCtx;
+    private DataSyncCallBack dataSyncCallBack;
 
     public void setmCtx(Context mCtx) {
         this.mCtx = mCtx;
@@ -56,8 +57,21 @@ public class DataSync extends AsyncTask<String, String, String> {
             StoreData storeData = new StoreData().loadString(s);
             Log.d(TAG, "data size = " + storeData.getData().size());
             DataManager.getInstance(mCtx).setStoreData(storeData);
+            dataSyncCallBack.syncFinish();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void registerDataSyncCallBack(DataSyncCallBack dataSyncCallBack){
+        this.dataSyncCallBack = dataSyncCallBack;
+    }
+
+    public void unregisterDataSyncCallBack(){
+        dataSyncCallBack = null;
+    }
+
+    public interface DataSyncCallBack{
+        void syncFinish();
     }
 }

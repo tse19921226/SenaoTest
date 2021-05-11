@@ -5,9 +5,9 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class TopBarView extends ConstraintLayout {
@@ -19,6 +19,8 @@ public class TopBarView extends ConstraintLayout {
     private ImageView ivBack;
     private TextView tvTitle;
     private SearchView svSearch;
+    private TopBarCallBack topBarCallBack;
+    private TopBarSearchCallBack searchCallBack;
     public TopBarView(Context context) {
         super(context);
         initView(context, null);
@@ -41,6 +43,7 @@ public class TopBarView extends ConstraintLayout {
         tvTitle = view.findViewById(R.id.tv_title);
         svSearch = view.findViewById(R.id.sv_search);
         ivBack.setOnClickListener(onClickListener);
+        svSearch.setOnQueryTextListener(onQueryTextListener);
     }
 
     public void setViewType(int Type){
@@ -62,7 +65,45 @@ public class TopBarView extends ConstraintLayout {
     private View.OnClickListener onClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            topBarCallBack.onClick();
         }
     };
+
+    private SearchView.OnQueryTextListener onQueryTextListener = new SearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            searchCallBack.onTextChange(newText);
+            return false;
+        }
+    };
+
+    public interface TopBarCallBack{
+        void onClick();
+    }
+
+    public void registerTopBarCallBack(TopBarCallBack callBack){
+        topBarCallBack = callBack;
+    }
+
+    public void unregisterTopBarCallBack(){
+        topBarCallBack = null;
+    }
+
+    public interface TopBarSearchCallBack{
+        void onTextSubmit(String query);
+        void onTextChange(String text);
+    }
+
+    public void registerSearchCallBack(TopBarSearchCallBack callBack){
+        searchCallBack = callBack;
+    }
+
+    public void unregisterSearchCallBack(){
+        searchCallBack = null;
+    }
 }
